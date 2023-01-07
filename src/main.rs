@@ -13,9 +13,9 @@ fn main() {
             .read_line(&mut escala)
             .expect("Falha ao ler entrada");
 
-        let escala: u8 = match escala.trim() {
-            "C" => 1,
-            "F" => 2,
+        let escala: bool = match escala.trim() {
+            "C" => true,
+            "F" => false,
             _ => continue,
         };
 
@@ -32,7 +32,7 @@ fn main() {
             Err(_) => continue,
         };
 
-        if escala == 1 {
+        if escala {
             converter_para_celcius(temperatura);
         } else {
             converter_para_fahr(temperatura);
