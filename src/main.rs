@@ -13,12 +13,6 @@ fn main() {
             .read_line(&mut escala)
             .expect("Falha ao ler entrada");
 
-        let escala: bool = match escala.trim() {
-            "C" => true,
-            "F" => false,
-            _ => continue,
-        };
-
         println!("\nInforme uma temperatura\n");
 
         let mut temperatura: String = String::new();
@@ -32,10 +26,10 @@ fn main() {
             Err(_) => continue,
         };
 
-        if escala {
-            converter_para_celcius(temperatura);
-        } else {
-            converter_para_fahr(temperatura);
+        match escala.trim() {
+            "C" => converter_para_celcius(temperatura),
+            "F" => converter_para_fahr(temperatura),
+            _ => continue,
         }
     }
 }
